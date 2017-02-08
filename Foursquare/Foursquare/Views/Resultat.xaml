@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Foursquare.Views.Resultat"
+             xmlns:viewModels="clr-namespace:Foursquare.ViewModels;assembly=Foursquare"
+             BackgroundColor="White">>
+  <ContentPage.BindingContext>
+    <viewModels:FoursquareViewModel/>
+  </ContentPage.BindingContext>
+  <ListView ItemsSource="{Binding FoursquareVenues.response.groups[0].items}"
+            HasUnevenRows="True">
+    <ListView.ItemTemplate>
+      <DataTemplate>
+        <ViewCell>
+          <StackLayout Orientation="Vertical"
+                       Padding="10,0,10,20">
+            <Label Text="{Binding venue.name}"
+                   TextColor="#2d5be3"
+                    FontSize="22"/>
+            <StackLayout Orientation="Horizontal">
+              <Grid BackgroundColor="#0D47A1"
+                    Padding="5.0">
+                <Label Text="{Binding venue.rating}"
+                       TextColor="White"
+                        FontSize="24"></Label>
+              </Grid>
+
+              <StackLayout Orientation="Vertical">
+                <StackLayout Orientation="Horizontal">
+                  <Label Text="{Binding venue.stats.checkinsCount, StringFormat='{0:n0} checkins'}"
+                       TextColor="#0D47A1"
+                         FontSize="14"/>
+                  <Label Text="{Binding venue.stats.usersCount, StringFormat='{0:n0} users'}"
+                          TextColor="#0D47A1"
+                            FontSize="14"/>
+                  <Label Text="{Binding venue.stats.tipCount, StringFormat='{0:n0} tips'}"
+                          TextColor="#0D47A1"
+                            FontSize="14"/>
+
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" TranslationY="-7">
+                  <Label Text="{Binding venue.location.distance, StringFormat='{0:n0} m away'}"
+                         TextColor="#2196F3"
+                         FontSize="14"/>
+                  <Label Text="{Binding venue.categories[0].name, StringFormat='{0:n0} category'}"
+                         TextColor="#0D47a1"
+                         FontSize="14"/>
+                </StackLayout>
+              </StackLayout>
+            </StackLayout>
+
+            <Label Text="{Binding venue.location.formattedAddress[0]}"
+                       TextColor="Gray"
+                       FontSize="14"
+                       TranslationY="-5"/>
+            <Label Text="{Binding venue.location.formattedAddress[1]}"
+                   TextColor="Gray"
+                   FontSize="14"
+                   TranslationY="-5"/>
+            <Image Source="{Binding venue.featuredPhotos.items[0].suffix, StringFormat='https://irs1.4sqi.net/img/general/355x200{0}'}"
+              HeightRequest="200"/>
+            <Label Text="{Binding tips[0].text}"
+               TextColor="Gray"
+               FontSize="15"/>
+            <Grid HeightRequest="2"
+                  BackgroundColor="Gray"/>
+          </StackLayout>
+        </ViewCell>
+      </DataTemplate>
+    </ListView.ItemTemplate>
+  </ListView>
+
+</ContentPage>

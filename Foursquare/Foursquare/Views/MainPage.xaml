@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Foursquare"
+             x:Class="Foursquare.MainPage">
+  <StackLayout Orientation="Vertical" Padding="5,100,5,20">
+   
+      <Label Text="Welcome to Fousquare"
+             TextColor="#2d5be3"
+             FontSize="25"
+             HorizontalTextAlignment="Center" />
+      <Entry x:Name="MainEntry"
+        Text="Search"
+             FontSize="20"
+           />
+      <Button Text="Search"
+              FontSize="35"
+              TextColor="White"
+              BackgroundColor="#2d5be3"
+              Clicked="click"/>
+
+  </StackLayout>
+
+</ContentPage>
